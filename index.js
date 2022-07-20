@@ -80,6 +80,8 @@ function game(playerChoice) {
     } else if (result === "TIE") {
       createMessage("It's a tie!");
     }
+  } else if (player === 5 || computer === 5) {
+    createMessage("Game Over");
   }
 }
 
