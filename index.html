@@ -10,18 +10,24 @@
   <body>
     <div class="gameContainer">
       <div id="scoreBoard" class="board">
-        <div id="man" class="player">MAN</div>
-        <div id="computer" class="player">Machine</div>
+        <div id="man" class="player">
+          <h1>Player</h1>
+          <h2 id="playerScore">0</h2>
+        </div>
+        <div id="computer" class="player">
+          <h1>Computer</h1>
+          <h2 id="computerScore">0</h2>
+        </div>
       </div>
       <div id="choiceBoard" class="board">
-        <button id="scissors">scissors</button>
-        <button id="rock">rock</button>
-        <button id="paper">paper</button>
+        <button id="scissors"><h3>scissors</h3></button>
+        <button id="rock"><h3>rock</h3></button>
+        <button id="paper"><h3>paper</h3></button>
       </div>
       <div id="announcementBoard" class="board">
-        <p>Make your selection to play against the machine</p>
+        <div class="message">Start by selecting your weapon</div>
       </div>
     </div>
-    <!--<script src="index.js"></script>-->
+    <script src="index.js"></script>
   </body>
 </html>

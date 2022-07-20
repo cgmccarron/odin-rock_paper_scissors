@@ -41,28 +41,52 @@ const playRound = (compChoice, playerChoice) => {
       }
   }
 };
+const createMessage = (text) => {
+  let message = document.createElement("div");
+  const board = document.getElementById("announcementBoard");
+  message.innerText = text;
+  message.setAttribute("class", "message");
 
-function game() {
-  let player = 0;
-  let computer = 0;
+  board.append(message);
+};
 
-  while (player < 5 && computer < 5) {
-    let playerChoice = prompt("What your input");
-    playerChoice = playerChoice.toLowerCase();
+const getPlayerChoice = () => {
+  const onClick = () => {
+    return this.id;
+  };
+
+  document.getElementById("scissors").onclick = onClick;
+  document.getElementById("rock").onclick = onClick;
+  document.getElementById("paper").onclick = onClick;
+};
+
+function game(playerChoice) {
+  let player = parseInt(document.getElementById("playerScore").innerText);
+  let computer = parseInt(document.getElementById("computerScore").innerText);
+
+  if (player < 5 && computer < 5) {
     let compChoice = getComputerChoice();
     let result = playRound(playerChoice, compChoice);
 
     if (result === "WIN") {
       player++;
+      createMessage(playerChoice + " beats " + compChoice);
+      document.getElementById("playerScore").innerText = player.toString();
     } else if (result === "LOSS") {
       computer++;
+      createMessage(playerChoice + " loses to " + compChoice);
+      document.getElementById("computerScore").innerText = computer.toString();
+      console.log(document.getElementById("computerScore").innerText);
+    } else if (result === "TIE") {
+      createMessage("It's a tie!");
     }
-
-    console.log(result);
   }
-
-  console.log("Your score : " + player);
-  console.log("Computer score : " + computer);
 }
 
-game();
+let player = parseInt(document.getElementById("playerScore").innerText);
+let computer = parseInt(document.getElementById("computerScore").innerText);
+const button = document.querySelector("#choiceBoard");
+button.addEventListener("click", (e) => {
+  let playerChoice = e.target.id;
+  game(playerChoice);
+});
